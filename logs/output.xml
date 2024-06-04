@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.8.10 on win32)" generated="2024-06-04T18:39:59.020874" rpa="false" schemaversion="5">
+<suite id="s1" name="TestSuite" source="D:\WSB_Projekt_Koncowy\PROJEKTWSB\TestSuite.robot">
+<test id="s1-t1" name="Test_Case_10" line="42">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-04T18:40:00.199455" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-04T18:40:00.199455" elapsed="4.769906"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-04T18:40:04.970363" elapsed="0.091997"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-04T18:40:00.197303" elapsed="4.865057"/>
+</kw>
+<kw name="PT10" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-04T18:40:05.069363" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-04T18:40:05.068360" elapsed="4.724653"/>
+</kw>
+<arg>Click Element</arg>
+<arg>id=header-user-account-icon</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2024-06-04T18:40:05.067359" elapsed="4.725654"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-04T18:40:09.794013" elapsed="0.029510"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-04T18:40:09.824542" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-04T18:40:09.824542" elapsed="0.209886"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-04T18:40:10.035429" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-04T18:40:10.122186" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-04T18:40:10.034428" elapsed="0.183909"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-04T18:40:10.219337" level="INFO">Clicking button '//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>locator=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-04T18:40:10.218337" elapsed="0.106912"/>
+</kw>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-04T18:40:05.065360" elapsed="5.259889"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-06-04T18:40:10.326326" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span'.</msg>
+<msg time="2024-06-04T18:40:10.503141" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-04T18:40:10.503141" level="FAIL">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</msg>
+<arg>xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="FAIL" start="2024-06-04T18:40:10.325249" elapsed="0.186230">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</status>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>//*[contains(text(), "Zobacz pełny katalog")]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-06-04T18:40:10.511479" elapsed="0.000000"/>
+</kw>
+<doc>Sortowanie</doc>
+<status status="FAIL" start="2024-06-04T18:40:05.064361" elapsed="5.447118">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-04T18:40:10.512476" elapsed="2.190905"/>
+</kw>
+<status status="FAIL" start="2024-06-04T18:40:00.196303" elapsed="12.509350">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</status>
+</test>
+<status status="FAIL" start="2024-06-04T18:39:59.022853" elapsed="13.687575"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="TestSuite">TestSuite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
