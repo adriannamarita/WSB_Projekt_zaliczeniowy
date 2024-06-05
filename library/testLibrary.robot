@@ -17,7 +17,6 @@ ${invalid_password_message}    Wpis jest za krótki.
 ${no_email}    Wymagany adres e-mail
 ${no_password}    Wymagane hasło
 
-
 *** Keywords ***
 Open Browser To Zalando Homepage
     [Documentation]    Otwarcie przeglądarki Chrome i zmaksymalizowanie okna
@@ -27,12 +26,30 @@ Open Browser To Zalando Homepage
 Login_to_account
     [Documentation]    Logowanie do konta
     [Arguments]    ${email}    ${password}
-    Run Keyword    Click Element  id=header-user-account-icon
+    Click Element    id=header-user-account-icon
+    sleep    2
+    ${is_new_page}=    Run Keyword And Return Status    Page Should Contain    W mgnieniu oka
+    Run Keyword If    ${is_new_page}    New_login_page    ${email}    ${password}    ELSE    Old_login_page    ${email}    ${password}
+
+Old_login_page
+    [Documentation]    Logowanie do konta na starej stronie
+    [Arguments]    ${email}    ${password}
     Wait Until Element Is Visible    id=login.email
     Input Text    id=login.email    ${email}
     Input Password    id=login.secret    ${password}
-    Click Button    locator=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button
+    Click Button    xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button
+    Wait Until Element Is Not Visible    xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button
 
+New_login_page
+    [Documentation]    Logowanie do konta na nowej stronie
+    [Arguments]    ${email}    ${password}
+    Wait Until Element Is Visible    id=lookup-email
+    Input Text    id=lookup-email    ${email}
+    Click Element    xpath=//*[@id="theme-wrapper"]/main/section[1]/form/button
+    Wait Until Element Is Visible    id=login-password
+    Input Text    id=login-password    ${password}
+    Click Element    xpath=//*[@id="theme-wrapper"]/main/section[3]/section[2]/form/button
+    Wait Until Element Is Not Visible    xpath=//*[@id="theme-wrapper"]/main/section[3]/section[2]/form/button
 
 #1. Testowanie Konta Użytkownika
         #1.1. Testowanie Poprawności Logowania
@@ -128,26 +145,86 @@ Empty_password
 #2. Testowanie Przeglądania Produktów
     #2.1. Testowanie Wyświetlania Produktów
 
-PT10
-    [Documentation]    Sortowanie
+Sort_from_lowest_price
+    [Documentation]    Sortowanie po najniższej cenie
     Login_to_account
     ...    email=${email}
     ...    password=${password}
-    click element   xpath=/html/body/div[4]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span
-    click element    xpath=//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span
-    click button    xpath=//*[@id=":r2j:"]
-    click element    //*[@id="collection_view_sort-dropdown"]/div[2]/div/form/div/div[5]/div/label/span
+    pause execution
+    wait until page does not contain    Witaj ponownie
+    Click Element    link=Akcesoria
+    wait until page contains    Liczba produktów:
+    click element   xpath=//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span
+    wait until page contains    Akcesoria damskie - dodatki
+    click element    link=Biżuteria
+    wait until page contains    Biżuteria damska
+    click button    //button[@aria-label='Sortuj']
+    click element    //*[@id="collection_view_sort-dropdown"]/div[2]/div/form/div/div[3]/div/label/span    #od najniższej
+    sleep    3
+
 
 #3. Testowanie Koszyka Zakupowego
     #3.1. Testowanie Dodawania Produktów do Koszyka
-
-
-
+Add_to_cart
+    [Documentation]    Dodanie produktu do koszyka
+    Login_to_account
+    ...    email=${email}
+    ...    password=${password}
+    wait until page does not contain    Witaj ponownie
+    click element    link=Promocje %
+    wait until page contains    Liczba produktów
+    #${product_text}=    Get WebElement    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
+    #${product_name}=    get element attribute    ${product_text}    alt
+    #log     ${product_name}
+    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span    #kobiety
+    wait until page contains    Produkty damskie w promocji
+    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/a/span    #akcesoria
+    wait until page contains    Akcesoria damskie w promocji
+    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/ul/li[1]/a/span    #torby i plecaki
+    wait until page contains    Torby damskie w promocji
+    scroll element into view    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[7]/a/span
+    click element    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
+    wait until page contains    Dodaj do koszyka
+    #${product_text_2}=    Get WebElement    //*[@id="main-content"]/div[1]/div/div[2]/h1/span
+    #${product_name_2}=    get element attribute    ${product_text_2}    innerText
+    #log    ${product_name_2}
+    #should be equal    ${product_name}    ${product_name_2}
+    click element    xpath://button[contains(@class, 'vfoVrE') and contains(@class, 'heWLCX') and contains(span, 'Dodaj do koszyka')]
+    #tu sprawdzic czy dodało
+    pause execution
+    sleep    2
 
 
     #3.2. Testowanie Usuwania Produktów z Koszyka
+Remove_from_cart
+    [Documentation]    Dodanie produktu do koszyka
+    Login_to_account
+    ...    email=${email}
+    ...    password=${password}
+    wait until page does not contain    Witaj ponownie
+    click element    link=Promocje %
+    wait until page contains    Liczba produktów
+    #${product_text}=    Get WebElement    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
+    #${product_name}=    get element attribute    ${product_text}    alt
+    #log     ${product_name}
+    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span    #kobiety
+    wait until page contains    Produkty damskie w promocji
+    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/a/span    #akcesoria
+    wait until page contains    Akcesoria damskie w promocji
+    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/ul/li[1]/a/span    #torby i plecaki
+    wait until page contains    Torby damskie w promocji
+    scroll element into view    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[7]/a/span
+    click element    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
+    wait until page contains    Dodaj do koszyka
+    #${product_text_2}=    Get WebElement    //*[@id="main-content"]/div[1]/div/div[2]/h1/span
+    #${product_name_2}=    get element attribute    ${product_text_2}    innerText
+    #log    ${product_name_2}
+    #should be equal    ${product_name}    ${product_name_2}
+    click element    xpath://button[contains(@class, 'vfoVrE') and contains(@class, 'heWLCX') and contains(span, 'Dodaj do koszyka')]
+    # tutaj usunac z koszyka
 
-
+    pause execution
+    sleep    2
 
 
 

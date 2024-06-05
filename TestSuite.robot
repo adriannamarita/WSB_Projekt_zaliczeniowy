@@ -40,4 +40,7 @@ Test_Case_9
     Empty_password
 
 Test_Case_10
-    PT10
+    Sort_from_lowest_price
+
+Test_Case_11
+    Add_to_cart
