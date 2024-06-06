@@ -1,14 +1,13 @@
 *** Settings ***
-Library    OperatingSystem
-Library    SeleniumLibrary
-Library    FakerLibrary    locale=pl_PL
-Library    Dialogs
-Library    Collections
-Resource     library/testLibrary.robot
+Library             OperatingSystem
+Library             SeleniumLibrary
+Library             FakerLibrary    locale=pl_PL
+Library             Dialogs
+Library             Collections
+Resource            library/testLibrary.robot
 
-
-Test Setup    Open Browser To Zalando Homepage
-Test Teardown     close browser
+Test Setup          Open Browser To Zalando Homepage
+Test Teardown       close browser
 
 
 *** Test Cases ***
