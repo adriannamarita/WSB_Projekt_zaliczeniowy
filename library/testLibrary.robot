@@ -44,7 +44,7 @@ Old_login_page
     Input Text    id=login.email    ${email}
     Input Password    id=login.secret    ${password}
     Click Button    xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button
-    Wait Until Element Is Not Visible    xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button
+    sleep    2
 
 New_login_page
     [Documentation]    Logowanie do konta na nowej stronie
@@ -93,7 +93,6 @@ Logout_of_account
     Wait Until Page Contains    Twoje konto
     Mouse Over    id=header-user-account-icon
     Wait Until Page Contains    Nie Testerka? Wyloguj się
-    # pause execution
     Go to    https://www.zalando.pl/logout/
     sleep    3
     Mouse Over    id=header-user-account-icon
@@ -160,7 +159,6 @@ Sort_from_lowest_price
     Login_to_account
     ...    email=${email}
     ...    password=${password}
-    pause execution
     wait until page does not contain    Witaj ponownie
     Click Element    link=Akcesoria
     wait until page contains    Liczba produktów:
@@ -215,8 +213,7 @@ Verification_of_added_product
     wait until page contains    Do zapłaty
     # Wczytanie nazwy produktu z pliku tekstowego
     ${product_name}=    Get File    ${product_file}
-    ${product_text2}=    get webelement
-    ...    //*[@id="article-c2bac10d-23e0-11ef-80d6-ed0cf4d8451b"]/div/div[2]/div[1]/div[1]
+    ${product_text2}=    get webelement     css=.z-coast-base__article__details
     ${product_name2}=    get element attribute    ${product_text2}    textContent
     log    ${product_name2}
     Should contain    ${product_name2}    ${product_name}

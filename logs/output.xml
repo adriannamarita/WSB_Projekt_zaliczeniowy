@@ -1,99 +1,1900 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.8.10 on win32)" generated="2024-06-04T18:39:59.020874" rpa="false" schemaversion="5">
-<suite id="s1" name="TestSuite" source="D:\WSB_Projekt_Koncowy\PROJEKTWSB\TestSuite.robot">
-<test id="s1-t1" name="Test_Case_10" line="42">
+<robot generator="Robot 7.0 (Python 3.8.10 on win32)" generated="2024-06-06T15:41:00.505640" rpa="false" schemaversion="5">
+<suite id="s1" name="TestSuite" source="D:\WSB_Projekt_zaliczeniowy\pythonProject\WSB_Projekt_zaliczeniowy\TestSuite.robot">
+<test id="s1-t1" name="Test_Case_1" line="14">
 <kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-06-04T18:40:00.199455" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<msg time="2024-06-06T15:41:02.823695" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
 <arg>${URL}</arg>
 <arg>Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-06-04T18:40:00.199455" elapsed="4.769906"/>
+<status status="PASS" start="2024-06-06T15:41:02.821688" elapsed="5.181360"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2024-06-04T18:40:04.970363" elapsed="0.091997"/>
+<status status="PASS" start="2024-06-06T15:41:08.004043" elapsed="3.348843"/>
 </kw>
 <doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
-<status status="PASS" start="2024-06-04T18:40:00.197303" elapsed="4.865057"/>
+<status status="PASS" start="2024-06-06T15:41:02.818691" elapsed="8.536188"/>
 </kw>
-<kw name="PT10" owner="testLibrary">
+<kw name="Valid_login" owner="testLibrary">
 <kw name="Login_to_account" owner="testLibrary">
-<kw name="Run Keyword" owner="BuiltIn">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-06-04T18:40:05.069363" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<msg time="2024-06-06T15:41:11.372881" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
 <arg>id=header-user-account-icon</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-06-04T18:40:05.068360" elapsed="4.724653"/>
+<status status="PASS" start="2024-06-06T15:41:11.368877" elapsed="2.800996"/>
 </kw>
-<arg>Click Element</arg>
-<arg>id=header-user-account-icon</arg>
-<doc>Executes the given keyword with the given arguments.</doc>
-<status status="PASS" start="2024-06-04T18:40:05.067359" elapsed="4.725654"/>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:41:15.174900" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:41:14.170860" elapsed="1.004040"/>
 </kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:15.474906" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:41:15.475908" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:41:15.175900" elapsed="0.301999">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:41:15.477899" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:41:15.174900" elapsed="0.302999"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:41:15.479917" elapsed="0.000983"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:41:15.478902" elapsed="0.001998"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>id=login.email</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2024-06-04T18:40:09.794013" elapsed="0.029510"/>
+<status status="PASS" start="2024-06-06T15:41:15.482898" elapsed="0.063757"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2024-06-04T18:40:09.824542" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<msg time="2024-06-06T15:41:15.548679" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
 <arg>id=login.email</arg>
 <arg>${email}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-06-04T18:40:09.824542" elapsed="0.209886"/>
+<status status="PASS" start="2024-06-06T15:41:15.547673" elapsed="0.611471"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2024-06-04T18:40:10.035429" level="INFO">Typing password into text field 'id=login.secret'.</msg>
-<msg time="2024-06-04T18:40:10.122186" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2024-06-06T15:41:16.161121" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:41:16.257132" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>id=login.secret</arg>
 <arg>${password}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-06-04T18:40:10.034428" elapsed="0.183909"/>
+<status status="PASS" start="2024-06-06T15:41:16.160129" elapsed="0.334608"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-06-04T18:40:10.219337" level="INFO">Clicking button '//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
-<arg>locator=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<msg time="2024-06-06T15:41:16.496746" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-06-04T18:40:10.218337" elapsed="0.106912"/>
+<status status="PASS" start="2024-06-06T15:41:16.495732" elapsed="0.324664"/>
 </kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:41:18.825981" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:41:16.821387" elapsed="2.006155"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:41:15.481903" elapsed="3.345639"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:41:15.480900" elapsed="3.347643"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:41:15.477899" elapsed="3.350644"/>
+</if>
 <arg>email=${email}</arg>
 <arg>password=${password}</arg>
 <doc>Logowanie do konta</doc>
-<status status="PASS" start="2024-06-04T18:40:05.065360" elapsed="5.259889"/>
+<status status="PASS" start="2024-06-06T15:41:11.361887" elapsed="7.466656"/>
 </kw>
-<kw name="Mouse Over" owner="SeleniumLibrary">
-<msg time="2024-06-04T18:40:10.326326" level="INFO">Simulating Mouse Over on element 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span'.</msg>
-<msg time="2024-06-04T18:40:10.503141" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-06-04T18:40:10.503141" level="FAIL">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</msg>
-<arg>xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span</arg>
-<doc>Simulates hovering the mouse over the element ``locator``.</doc>
-<status status="FAIL" start="2024-06-04T18:40:10.325249" elapsed="0.186230">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</status>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<arg>//*[contains(text(), "Zobacz pełny katalog")]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2024-06-04T18:40:10.511479" elapsed="0.000000"/>
-</kw>
-<doc>Sortowanie</doc>
-<status status="FAIL" start="2024-06-04T18:40:05.064361" elapsed="5.447118">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</status>
+<doc>Logowanie użytkownika z poprawnymi danymi</doc>
+<status status="PASS" start="2024-06-06T15:41:11.358875" elapsed="7.470674"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2024-06-04T18:40:10.512476" elapsed="2.190905"/>
+<status status="PASS" start="2024-06-06T15:41:18.833544" elapsed="3.257807"/>
 </kw>
-<status status="FAIL" start="2024-06-04T18:40:00.196303" elapsed="12.509350">Element with locator 'xpath=/html/body/div[2]/div/x-wrapper-re-1-4/div/div/div[2]/div[1]/div/div[1]/div/nav/ul/li[5]/span/a/span' not found.</status>
+<status status="PASS" start="2024-06-06T15:41:02.816692" elapsed="19.275659"/>
 </test>
-<status status="FAIL" start="2024-06-04T18:39:59.022853" elapsed="13.687575"/>
+<test id="s1-t2" name="Test_Case_2" line="17">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:22.098352" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:41:22.098352" elapsed="6.401743"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:41:28.501097" elapsed="0.497773"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:41:22.097350" elapsed="6.902526"/>
+</kw>
+<kw name="Valid_login_page" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:29.007868" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:29.006870" elapsed="2.608131"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:41:32.626260" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:41:31.616001" elapsed="1.010259"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:32.890547" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:41:32.890547" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:41:32.627259" elapsed="0.264281">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:41:32.891540" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:41:32.627259" elapsed="0.264281"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:41:32.892543" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:41:32.892543" elapsed="0.000998"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:41:32.894539" elapsed="0.063725"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:32.962273" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:32.960272" elapsed="0.553743"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:33.516017" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:41:33.600011" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:33.515013" elapsed="0.298017"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:33.815014" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:33.814027" elapsed="0.229765"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:41:36.051145" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:41:34.045790" elapsed="2.005355"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:41:32.893541" elapsed="3.162599"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:41:32.893541" elapsed="3.162599"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:41:32.892543" elapsed="3.164609"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:41:29.003872" elapsed="7.053280"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Twoje konto</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:41:36.060144" elapsed="0.622036"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:36.816204" level="INFO">Current page contains text 'Twoje konto'.</msg>
+<arg>Twoje konto</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2024-06-06T15:41:36.685174" elapsed="0.131030"/>
+</kw>
+<doc>Sprawdzenie, czy użytkownik jest przekierowywany do właściwej strony po udanym logowaniu</doc>
+<status status="PASS" start="2024-06-06T15:41:29.001873" elapsed="7.815298"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:41:36.818164" elapsed="2.375396"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:41:22.093351" elapsed="17.101194"/>
+</test>
+<test id="s1-t3" name="Test_Case_3" line="20">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:39.197565" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:41:39.197565" elapsed="6.579928"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:41:45.779501" elapsed="0.387401"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:41:39.197565" elapsed="6.971344"/>
+</kw>
+<kw name="Email_validation" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:46.182897" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:46.181907" elapsed="2.789875"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:41:49.980969" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:41:48.972731" elapsed="1.008238"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:50.251569" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:41:50.251569" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:41:49.981987" elapsed="0.271604">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:41:50.253591" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:41:49.981987" elapsed="0.271604"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:41:50.255588" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:41:50.254585" elapsed="0.002015"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:41:50.259593" elapsed="0.056994"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:50.318580" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:50.318580" elapsed="0.530769"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:50.851328" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:41:50.937332" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:50.850322" elapsed="0.295001"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:51.146317" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:51.145323" elapsed="0.216095"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:41:53.365961" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:41:51.362410" elapsed="2.007545"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:41:50.257583" elapsed="3.114376"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:41:50.256600" elapsed="3.126358"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:41:50.254585" elapsed="3.129395"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:41:46.176898" elapsed="7.208073"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Twoje konto</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:41:53.394507" elapsed="0.693974"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:54.093483" level="INFO">Clicking element 'xpath=//*[@id="main-content"]/div/div/div[1]/div/nav[2]/ul/li[1]/ul/li[6]/a/span'.</msg>
+<arg>xpath=//*[@id="main-content"]/div/div/div[1]/div/nav[2]/ul/li[1]/ul/li[6]/a/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:41:54.091500" elapsed="2.862907"/>
+</kw>
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:41:56.961405" level="INFO">Verifying element 'xpath=//*[@id="main-content"]/div/div/div[2]/x-wrapper-main/div/div/div[4]/div[1]/div[2]/div/div[2]' contains exact text 'testerkawsb@gmail.com'.</msg>
+<arg>xpath=//*[@id="main-content"]/div/div/div[2]/x-wrapper-main/div/div/div[4]/div[1]/div[2]/div/div[2]</arg>
+<arg>${email}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2024-06-06T15:41:56.959398" elapsed="0.702230"/>
+</kw>
+<doc>Sprawdzenie poprawności maila</doc>
+<status status="PASS" start="2024-06-06T15:41:46.172912" elapsed="11.489695"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:41:57.664611" elapsed="2.906859"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:41:39.196554" elapsed="21.375920"/>
+</test>
+<test id="s1-t4" name="Test_Case_4" line="23">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:00.576466" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:42:00.576466" elapsed="6.763685"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:42:07.341148" elapsed="0.417758"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:42:00.575462" elapsed="7.184428"/>
+</kw>
+<kw name="Logout_of_account" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:07.776893" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:07.775890" elapsed="2.441694"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:42:11.226656" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:10.218580" elapsed="1.009066"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:11.525490" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:42:11.526475" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:42:11.228635" elapsed="0.298826">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:42:11.528466" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:42:11.228635" elapsed="0.299831"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:42:11.529466" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:42:11.528466" elapsed="0.001000"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:42:11.532461" elapsed="0.049015"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:11.583467" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:11.582461" elapsed="0.533493"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:12.117949" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:42:12.221383" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:12.116950" elapsed="0.326972"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:12.443922" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:12.443922" elapsed="0.217533"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:42:14.672507" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:12.662449" elapsed="2.011057"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:42:11.530466" elapsed="3.143040"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:42:11.529466" elapsed="3.145034"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:42:11.528466" elapsed="3.146034"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:42:07.773893" elapsed="6.900607"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Twoje konto</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:42:14.675507" elapsed="2.559395"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:17.238915" level="INFO">Simulating Mouse Over on element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:17.235907" elapsed="0.513874"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Nie Testerka? Wyloguj się</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:42:17.751759" elapsed="0.070840"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:17.825517" level="INFO">Opening url 'https://www.zalando.pl/logout/'</msg>
+<arg>https://www.zalando.pl/logout/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:42:17.824509" elapsed="2.622723"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:42:23.449443" level="INFO">Slept 3 seconds.</msg>
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:20.448214" elapsed="3.002200"/>
+</kw>
+<kw name="Mouse Over" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:23.452398" level="INFO">Simulating Mouse Over on element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:23.451408" elapsed="0.319517"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:23.857925" level="INFO">Current page contains text 'Zaloguj się'.</msg>
+<arg>Zaloguj się</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2024-06-06T15:42:23.770925" elapsed="0.087000"/>
+</kw>
+<doc>Wylogowanie</doc>
+<status status="PASS" start="2024-06-06T15:42:07.771891" elapsed="16.087035"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:42:23.861942" elapsed="2.513923"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:42:00.574482" elapsed="25.801758"/>
+</test>
+<test id="s1-t5" name="Test_Case_5" line="26">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:26.382265" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:42:26.382265" elapsed="7.416810"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:42:33.800075" elapsed="0.218988"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:42:26.381271" elapsed="7.638806"/>
+</kw>
+<kw name="Invalid_login" owner="testLibrary">
+<kw name="Email" owner="FakerLibrary">
+<msg time="2024-06-06T15:42:34.029071" level="INFO">${invalid_email} = filip19@example.net</msg>
+<var>${invalid_email}</var>
+<status status="PASS" start="2024-06-06T15:42:34.025073" elapsed="0.004998"/>
+</kw>
+<kw name="Password" owner="FakerLibrary">
+<msg time="2024-06-06T15:42:34.036073" level="INFO">${invalid_password} = )09LTDcm2%</msg>
+<var>${invalid_password}</var>
+<doc>Generate a random password of the specified ``length``.</doc>
+<status status="PASS" start="2024-06-06T15:42:34.033067" elapsed="0.005013"/>
+</kw>
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:34.045067" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:34.045067" elapsed="2.904895"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:42:37.954874" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:36.950964" elapsed="1.004912"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:38.265971" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:42:38.265971" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:42:37.961882" elapsed="0.306098">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:42:38.271001" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:42:37.956859" elapsed="0.314142"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:42:38.273983" elapsed="0.001006"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:42:38.271976" elapsed="0.003013"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:42:38.281008" elapsed="0.076434"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:38.359433" level="INFO">Typing text 'filip19@example.net' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:38.358426" elapsed="0.555565"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:38.914992" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:42:39.006992" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:38.913991" elapsed="0.293026"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:39.210041" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:39.208024" elapsed="0.252324"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:42:41.469961" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:39.461323" elapsed="2.009631"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:42:38.277008" elapsed="3.194958"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:42:38.275979" elapsed="3.196971"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:42:38.271976" elapsed="3.200974"/>
+</if>
+<arg>email=${invalid_email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:42:34.042075" elapsed="7.430875"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:42:43.486334" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:41.473952" elapsed="2.015387"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:43.596336" level="INFO">${message} = Coś poszło nie tak. Spróbuj wpisać swoje dane ponownie</msg>
+<var>${message}</var>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div[1]/div/div/span</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:43.490355" elapsed="0.106998"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${invalid_data_message}</arg>
+<arg>${message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-06-06T15:42:43.598346" elapsed="0.001004"/>
+</kw>
+<doc>Sprawdzenie poprawności komunikatu o błędnych danych logowania</doc>
+<status status="PASS" start="2024-06-06T15:42:34.022072" elapsed="9.579290"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:42:43.604345" elapsed="2.752729"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:42:26.378260" elapsed="19.980820"/>
+</test>
+<test id="s1-t6" name="Test_Case_6" line="29">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:46.368095" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:42:46.367076" elapsed="6.498643"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:42:52.866701" elapsed="0.381291"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:42:46.367076" elapsed="6.881918"/>
+</kw>
+<kw name="Incomplete_email" owner="testLibrary">
+<kw name="Password" owner="FakerLibrary">
+<msg time="2024-06-06T15:42:53.255002" level="INFO">${invalid_password} = xRjMdHMR&amp;9</msg>
+<var>${invalid_password}</var>
+<doc>Generate a random password of the specified ``length``.</doc>
+<status status="PASS" start="2024-06-06T15:42:53.253993" elapsed="0.001009"/>
+</kw>
+<kw name="Word" owner="FakerLibrary">
+<msg time="2024-06-06T15:42:53.257993" level="INFO">${invalid_email} = piwo</msg>
+<var>${invalid_email}</var>
+<doc>Generate a word.</doc>
+<status status="PASS" start="2024-06-06T15:42:53.255994" elapsed="0.001999"/>
+</kw>
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:53.263997" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:53.262992" elapsed="2.602582"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:42:56.871428" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:55.867585" elapsed="1.003843"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:57.158901" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:42:57.158901" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:42:56.873427" elapsed="0.287468">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:42:57.160895" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:42:56.872453" elapsed="0.288442"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:42:57.162911" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:42:57.161913" elapsed="0.000998"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:42:57.165898" elapsed="0.059019"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:57.227892" level="INFO">Typing text 'piwo' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:57.225919" elapsed="0.339012"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:57.569911" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:42:57.647666" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:57.566910" elapsed="0.318770"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:42:57.887671" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:42:57.886673" elapsed="0.255166"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:00.150210" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:42:58.143866" elapsed="2.007299"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:42:57.163898" elapsed="2.987267"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:42:57.162911" elapsed="2.989256"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:42:57.161913" elapsed="2.990254"/>
+</if>
+<arg>email=${invalid_email}</arg>
+<arg>password=${invalid_password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:42:53.260998" elapsed="6.891169"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:02.167783" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:00.152167" elapsed="2.015616"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:02.239203" level="INFO">${message} = Podaj pełny adres e-mail (np. jan.kowalski@domena.pl).</msg>
+<var>${message}</var>
+<arg>locator=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/div[1]/div/div[2]/span</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:02.168772" elapsed="0.070431"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${invalid_email_message}</arg>
+<arg>${message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-06-06T15:43:02.240200" elapsed="0.001014"/>
+</kw>
+<doc>Sprawdzenie komunikatu o niepełnym adresie email</doc>
+<status status="PASS" start="2024-06-06T15:42:53.251000" elapsed="8.990214"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:43:02.242199" elapsed="3.055929"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:42:46.363086" elapsed="18.936024"/>
+</test>
+<test id="s1-t7" name="Test_Case_7" line="32">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:05.307116" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:43:05.307116" elapsed="6.643413"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:43:11.952040" elapsed="0.286004"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:43:05.305133" elapsed="6.933974"/>
+</kw>
+<kw name="Password_too_short" owner="testLibrary">
+<kw name="Password" owner="FakerLibrary">
+<msg time="2024-06-06T15:43:12.269134" level="INFO">${invalid_password} = @6HeC</msg>
+<var>${invalid_password}</var>
+<arg>length=5</arg>
+<doc>Generate a random password of the specified ``length``.</doc>
+<status status="PASS" start="2024-06-06T15:43:12.267126" elapsed="0.002008"/>
+</kw>
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:12.276132" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:12.274149" elapsed="2.353902"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:15.634302" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:14.630053" elapsed="1.005280"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:15.936315" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:43:15.937302" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:43:15.638299" elapsed="0.303005">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:43:15.942296" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:43:15.636309" elapsed="0.305987"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:43:15.943290" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:43:15.942296" elapsed="0.000994"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:43:15.945291" elapsed="0.081077"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:16.029368" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:16.027365" elapsed="0.638616"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:16.667984" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:43:16.772991" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:16.666983" elapsed="0.306550"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:16.975546" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:16.974540" elapsed="0.257991"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:19.249610" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:17.234541" elapsed="2.017080"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:43:15.944295" elapsed="3.309319"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:43:15.943290" elapsed="3.310324"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:43:15.942296" elapsed="3.311318"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${invalid_password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:43:12.270126" elapsed="6.983488"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:21.261303" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:19.254610" elapsed="2.006693"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:21.360550" level="INFO">${message} = Wpis jest za krótki.</msg>
+<var>${message}</var>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/div[2]/div/div[2]/span</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:21.262306" elapsed="0.098244"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${invalid_password_message}</arg>
+<arg>${message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-06-06T15:43:21.361571" elapsed="0.000976"/>
+</kw>
+<doc>Sprawdzenie komunikatu o zbyt krótkim haśle</doc>
+<status status="PASS" start="2024-06-06T15:43:12.265128" elapsed="9.098420"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:43:21.365559" elapsed="4.296309"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:43:05.302166" elapsed="20.360723"/>
+</test>
+<test id="s1-t8" name="Test_Case_8" line="35">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:25.670879" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:43:25.668865" elapsed="4.106452"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:43:29.778309" elapsed="2.683406"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:43:25.667884" elapsed="6.794815"/>
+</kw>
+<kw name="Empty_email" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:32.477704" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:32.475691" elapsed="3.345920"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:36.833386" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:35.822609" elapsed="1.010777"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:37.133391" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:43:37.134388" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:43:36.836394" elapsed="0.298994">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:43:37.136393" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:43:36.834388" elapsed="0.302005"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:43:37.137389" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:43:37.136393" elapsed="0.000996"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:43:37.138383" elapsed="0.047006"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:37.186385" level="INFO">Typing text '' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:37.186385" elapsed="0.210343"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:37.400741" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:43:37.509724" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:37.397720" elapsed="0.392644"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:37.791366" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:37.790364" elapsed="0.255822"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:40.063138" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:38.048203" elapsed="2.014935"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:43:37.137389" elapsed="2.925749"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:43:37.137389" elapsed="2.926759"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:43:37.136393" elapsed="2.927755"/>
+</if>
+<arg>email=${EMPTY}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:43:32.469686" elapsed="7.594462"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:42.066756" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:40.065148" elapsed="2.001608"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:42.124758" level="INFO">${message} = Wymagany adres e-mail</msg>
+<var>${message}</var>
+<arg>//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/div[1]/div/div[2]/span</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:42.067758" elapsed="0.057000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${no_email}</arg>
+<arg>${message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-06-06T15:43:42.124758" elapsed="0.001008"/>
+</kw>
+<doc>Sprawdzenie komunikatu o braku emaila</doc>
+<status status="PASS" start="2024-06-06T15:43:32.467698" elapsed="9.658068"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:43:42.126749" elapsed="2.285056"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:43:25.664867" elapsed="18.746938"/>
+</test>
+<test id="s1-t9" name="Test_Case_9" line="38">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:44.418794" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:43:44.417815" elapsed="6.429495"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:43:50.848313" elapsed="0.296555"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:43:44.414794" elapsed="6.730074"/>
+</kw>
+<kw name="Empty_password" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:51.152871" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:51.151870" elapsed="2.313052"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:54.474941" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:53.464922" elapsed="1.010019"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:54.764985" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-9.png"&gt;&lt;img src="selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:43:54.765987" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:43:54.476956" elapsed="0.290026">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:43:54.766982" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:43:54.475948" elapsed="0.291034"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:43:54.769989" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:43:54.767991" elapsed="0.001998"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:43:54.771987" elapsed="0.048005"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:54.820995" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:54.820995" elapsed="0.481016"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:55.305004" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:43:55.399999" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:55.303007" elapsed="0.218992"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:55.523001" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:55.523001" elapsed="0.207362"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:57.739627" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:55.730363" elapsed="2.010273"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:43:54.770992" elapsed="2.970643"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:43:54.769989" elapsed="2.971646"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:43:54.767991" elapsed="2.973644"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${EMPTY}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:43:51.147867" elapsed="6.593768"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:43:59.757358" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:43:57.742634" elapsed="2.014724"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:43:59.895654" level="INFO">${message} = Wymagane hasło</msg>
+<var>${message}</var>
+<arg>//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/div[2]/div/div[2]/span</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:43:59.758896" elapsed="0.136758"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${no_password}</arg>
+<arg>${message}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-06-06T15:43:59.896639" elapsed="0.002006"/>
+</kw>
+<doc>Sprawdzenie komunikatu o braku hasła</doc>
+<status status="PASS" start="2024-06-06T15:43:51.145867" elapsed="8.752778"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:43:59.908648" elapsed="4.396675"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:43:44.413799" elapsed="19.891524"/>
+</test>
+<test id="s1-t10" name="Test_Case_10" line="41">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:04.308351" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:44:04.307347" elapsed="6.560750"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:44:10.869132" elapsed="0.394513"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:44:04.307347" elapsed="6.958297"/>
+</kw>
+<kw name="Sort_from_lowest_price" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:11.281632" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:11.280639" elapsed="2.266793"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:44:14.560935" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:44:13.547432" elapsed="1.014519"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:14.847547" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-10.png"&gt;&lt;img src="selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:44:14.848547" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:44:14.562936" elapsed="0.285611">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:44:14.849551" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:44:14.562936" elapsed="0.286615"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:44:14.850546" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:44:14.849551" elapsed="0.000995"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:44:14.857543" elapsed="0.051004"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:14.910546" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:14.908547" elapsed="0.519996"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:15.430526" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:44:15.527689" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:15.429535" elapsed="0.306157"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:15.738692" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:15.736688" elapsed="0.211003"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:44:17.957139" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:44:15.949700" elapsed="2.009429"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:44:14.851550" elapsed="3.107579"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:44:14.850546" elapsed="3.108583"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:44:14.849551" elapsed="3.109578"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:44:11.278633" elapsed="6.681516"/>
+</kw>
+<kw name="Wait Until Page Does Not Contain" owner="SeleniumLibrary">
+<arg>Witaj ponownie</arg>
+<doc>Waits until ``text`` disappears from the current page.</doc>
+<status status="PASS" start="2024-06-06T15:44:17.960149" elapsed="1.117233"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:19.079394" level="INFO">Clicking element 'link=Akcesoria'.</msg>
+<arg>link=Akcesoria</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:19.077382" elapsed="7.892220"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Liczba produktów:</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:44:26.970602" elapsed="0.303455"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:27.276608" level="INFO">Clicking element 'xpath=//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span'.</msg>
+<arg>xpath=//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:27.276065" elapsed="1.875158"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Akcesoria damskie - dodatki</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:44:29.153187" elapsed="3.568697"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:32.723868" level="INFO">Clicking element 'link=Biżuteria'.</msg>
+<arg>link=Biżuteria</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:32.722866" elapsed="1.791182"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Biżuteria damska</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:44:34.515086" elapsed="3.089914"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:37.607004" level="INFO">Clicking button '//button[@aria-label='Sortuj']'.</msg>
+<arg>//button[@aria-label='Sortuj']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:37.607004" elapsed="0.430709"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:38.039704" level="INFO">Clicking element '//*[@id="collection_view_sort-dropdown"]/div[2]/div/form/div/div[3]/div/label/span'.</msg>
+<arg>//*[@id="collection_view_sort-dropdown"]/div[2]/div/form/div/div[3]/div/label/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:38.038701" elapsed="0.358828"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:44:41.406070" level="INFO">Slept 3 seconds.</msg>
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:44:38.398542" elapsed="3.008524"/>
+</kw>
+<doc>Sortowanie po najniższej cenie</doc>
+<status status="PASS" start="2024-06-06T15:44:11.276634" elapsed="30.130432"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:44:41.408068" elapsed="2.673764"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:44:04.306342" elapsed="39.777521"/>
+</test>
+<test id="s1-t11" name="Test_Case_11" line="44">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:44.088815" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:44:44.088815" elapsed="6.630764"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:44:50.721583" elapsed="0.431213"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:44:44.087819" elapsed="7.066979"/>
+</kw>
+<kw name="Add_to_cart" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:51.186387" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:51.184352" elapsed="2.626634"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:44:54.817880" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:44:53.810986" elapsed="1.007887"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:55.122545" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-11.png"&gt;&lt;img src="selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:44:55.124574" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:44:54.820867" elapsed="0.305680">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:44:55.126547" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:44:54.819872" elapsed="0.306675"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:44:55.128541" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:44:55.127567" elapsed="0.000974"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:44:55.129542" elapsed="0.066001"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:55.197559" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:55.196553" elapsed="0.596108"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:55.793659" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:44:55.881661" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:55.793659" elapsed="0.330873"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:56.125526" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:56.125526" elapsed="0.229999"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:44:58.369999" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:44:56.356533" elapsed="2.014466"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:44:55.128541" elapsed="3.243464"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:44:55.128541" elapsed="3.244461"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:44:55.127567" elapsed="3.245435"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:44:51.178355" elapsed="7.194647"/>
+</kw>
+<kw name="Wait Until Page Does Not Contain" owner="SeleniumLibrary">
+<arg>Witaj ponownie</arg>
+<doc>Waits until ``text`` disappears from the current page.</doc>
+<status status="PASS" start="2024-06-06T15:44:58.376014" elapsed="1.281685"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:44:59.660246" level="INFO">Clicking element 'link=Promocje %'.</msg>
+<arg>link=Promocje %</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:44:59.658237" elapsed="6.129365"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Liczba produktów</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:45:05.788604" elapsed="0.239283"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:06.031863" level="INFO">Clicking element '//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span'.</msg>
+<arg>//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:06.030869" elapsed="0.939834"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Produkty damskie w promocji</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:45:06.972630" elapsed="5.382871"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:12.358508" level="INFO">Clicking element '//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/a/span'.</msg>
+<arg>//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/a/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:12.357510" elapsed="0.453875"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Akcesoria damskie w promocji</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:45:12.811385" elapsed="2.337706"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:15.153114" level="INFO">Clicking element '//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/ul/li[1]/a/span'.</msg>
+<arg>//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/ul/li[1]/a/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:15.151110" elapsed="0.723594"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Torby damskie w promocji</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:45:15.876726" elapsed="2.739510"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>//*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[7]/a/span</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-06-06T15:45:18.617237" elapsed="0.508089"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:19.127360" level="INFO">Clicking element '//*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img'.</msg>
+<arg>//*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:19.125326" elapsed="3.849702"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dodaj do koszyka</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:45:22.976028" elapsed="0.295924"/>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:23.432671" level="INFO">${product_text} = &lt;selenium.webdriver.remote.webelement.WebElement (session="e15fc4e0eb356d87b3002e41fac423b8", element="f.25F1FE416530D5149B5B412ACE7D6B58.d.5723DBBE32CF5583A802E723F1851C9E.e.354")&gt;</msg>
+<var>${product_text}</var>
+<arg>//*[@id="main-content"]/div[1]/div/div[2]/h1/span</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:23.272930" elapsed="0.159741"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:23.758065" level="INFO">${product_name} = Torba na zakupy</msg>
+<var>${product_name}</var>
+<arg>${product_text}</arg>
+<arg>innerText</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:23.434670" elapsed="0.324399"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-06-06T15:45:23.765065" level="INFO">Torba na zakupy</msg>
+<arg>${product_name}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-06-06T15:45:23.762093" elapsed="0.003978"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:23.769103" level="INFO">Clicking element 'xpath://button[contains(@class, 'vfoVrE') and contains(@class, 'heWLCX') and contains(span, 'Dodaj do koszyka')]'.</msg>
+<arg>xpath://button[contains(@class, 'vfoVrE') and contains(@class, 'heWLCX') and contains(span, 'Dodaj do koszyka')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:23.767069" elapsed="1.159254"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2024-06-06T15:45:24.934331" level="INFO" html="true">Created file '&lt;a href="file://D:\WSB_Projekt_zaliczeniowy\pythonProject\WSB_Projekt_zaliczeniowy\product.txt"&gt;D:\WSB_Projekt_zaliczeniowy\pythonProject\WSB_Projekt_zaliczeniowy\product.txt&lt;/a&gt;'.</msg>
+<arg>${product_file}</arg>
+<arg>${product_name}</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2024-06-06T15:45:24.931329" elapsed="0.003991"/>
+</kw>
+<doc>Dodanie produktu do koszyka</doc>
+<status status="PASS" start="2024-06-06T15:44:51.173373" elapsed="33.762975"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:45:24.939322" elapsed="3.203736"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:44:44.086820" elapsed="44.056748"/>
+</test>
+<test id="s1-t12" name="Test_Case_12" line="47">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:28.151603" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:45:28.149589" elapsed="6.350362"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:45:34.501974" elapsed="0.417015"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:45:28.147580" elapsed="6.772417"/>
+</kw>
+<kw name="Verification_of_added_product" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:34.925985" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:34.924984" elapsed="2.551503"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:45:38.489234" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:45:37.477485" elapsed="1.011749"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:38.768636" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-12.png"&gt;&lt;img src="selenium-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:45:38.769632" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:45:38.491228" elapsed="0.279401">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:45:38.770629" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:45:38.490237" elapsed="0.280392"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:45:38.771634" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:45:38.770629" elapsed="0.001005"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:45:38.773626" elapsed="0.054484"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:38.832116" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:38.829110" elapsed="0.588878"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:39.418980" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:45:39.534986" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:39.418980" elapsed="0.368003"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:39.789975" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:39.787975" elapsed="0.254540"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:45:42.055527" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:45:40.043523" elapsed="2.012996"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:45:38.772627" elapsed="3.284887"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:45:38.771634" elapsed="3.285880"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:45:38.770629" elapsed="3.286885"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:45:34.923993" elapsed="7.133521"/>
+</kw>
+<kw name="Wait Until Page Does Not Contain" owner="SeleniumLibrary">
+<arg>Witaj ponownie</arg>
+<doc>Waits until ``text`` disappears from the current page.</doc>
+<status status="PASS" start="2024-06-06T15:45:42.058519" elapsed="0.394758"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:42.457818" level="INFO">Clicking element 'css=[data-testid="cart"]'.</msg>
+<arg>css=[data-testid="cart"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:42.454840" elapsed="3.877734"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Do zapłaty</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:45:46.334586" elapsed="0.189466"/>
+</kw>
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2024-06-06T15:45:46.527060" level="INFO" html="true">Getting file '&lt;a href="file://D:\WSB_Projekt_zaliczeniowy\pythonProject\WSB_Projekt_zaliczeniowy\product.txt"&gt;D:\WSB_Projekt_zaliczeniowy\pythonProject\WSB_Projekt_zaliczeniowy\product.txt&lt;/a&gt;'.</msg>
+<msg time="2024-06-06T15:45:46.529038" level="INFO">${product_name} = Torba na zakupy</msg>
+<var>${product_name}</var>
+<arg>${product_file}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2024-06-06T15:45:46.525045" elapsed="0.003993"/>
+</kw>
+<kw name="Get WebElement" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:46.605151" level="INFO">${product_text2} = &lt;selenium.webdriver.remote.webelement.WebElement (session="57006fb5aac10318443917e75461c69d", element="f.13CD5DE2415E76405DFE844169C68203.d.D8F27B2EEEAA945399779E0D59C14CFA.e.268")&gt;</msg>
+<var>${product_text2}</var>
+<arg>css=.z-coast-base__article__details</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:46.530043" elapsed="0.075108"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:46.835141" level="INFO">${product_name2} = FiorucciLA PESCA TOWELLING TOTE BAG UNISEX - Torba na zakupy - whiteKolor: whiteRozmiar: One Size </msg>
+<var>${product_name2}</var>
+<arg>${product_text2}</arg>
+<arg>textContent</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:46.606143" elapsed="0.229995"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-06-06T15:45:46.838138" level="INFO">FiorucciLA PESCA TOWELLING TOTE BAG UNISEX - Torba na zakupy - whiteKolor: whiteRozmiar: One Size </msg>
+<arg>${product_name2}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-06-06T15:45:46.837152" elapsed="0.002014"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${product_name2}</arg>
+<arg>${product_name}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-06-06T15:45:46.840142" elapsed="0.003021"/>
+</kw>
+<doc>Sprawdzenie czy produkt dodany wcześniej znajduje się w koszyku</doc>
+<status status="PASS" start="2024-06-06T15:45:34.921999" elapsed="11.921164"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:45:46.844139" elapsed="3.736992"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:45:28.145591" elapsed="22.436526"/>
+</test>
+<test id="s1-t13" name="Test_Case_13" line="50">
+<kw name="Open Browser To Zalando Homepage" owner="testLibrary" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:50.586105" level="INFO">Opening browser 'Chrome' to base url 'https://www.zalando.pl'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-06-06T15:45:50.585108" elapsed="6.656810"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-06-06T15:45:57.243960" elapsed="0.298142"/>
+</kw>
+<doc>Otwarcie przeglądarki Chrome i zmaksymalizowanie okna</doc>
+<status status="PASS" start="2024-06-06T15:45:50.585108" elapsed="6.956994"/>
+</kw>
+<kw name="Remove_from_cart" owner="testLibrary">
+<kw name="Login_to_account" owner="testLibrary">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:45:57.548106" level="INFO">Clicking element 'id=header-user-account-icon'.</msg>
+<arg>id=header-user-account-icon</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:45:57.547105" elapsed="2.757114"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:46:01.310049" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:46:00.305232" elapsed="1.006839"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:46:01.608774" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-13.png"&gt;&lt;img src="selenium-screenshot-13.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-06-06T15:46:01.610776" level="FAIL">Page should have contained text 'W mgnieniu oka' but did not.</msg>
+<arg>W mgnieniu oka</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="FAIL" start="2024-06-06T15:46:01.320067" elapsed="0.292715">Page should have contained text 'W mgnieniu oka' but did not.</status>
+</kw>
+<msg time="2024-06-06T15:46:01.614773" level="INFO">${is_new_page} = False</msg>
+<var>${is_new_page}</var>
+<arg>Page Should Contain</arg>
+<arg>W mgnieniu oka</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-06-06T15:46:01.314058" elapsed="0.300715"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_new_page}">
+<kw name="New_login_page" owner="testLibrary">
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na nowej stronie</doc>
+<status status="NOT RUN" start="2024-06-06T15:46:01.616784" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-06-06T15:46:01.615776" elapsed="0.002005"/>
+</branch>
+<branch type="ELSE">
+<kw name="Old_login_page" owner="testLibrary">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=login.email</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-06-06T15:46:01.618770" elapsed="0.071005"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:46:01.692769" level="INFO">Typing text 'testerkawsb@gmail.com' into text field 'id=login.email'.</msg>
+<arg>id=login.email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:46:01.690777" elapsed="0.511875"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:46:02.204645" level="INFO">Typing password into text field 'id=login.secret'.</msg>
+<msg time="2024-06-06T15:46:02.297861" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=login.secret</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:46:02.203653" elapsed="0.339850"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:46:02.547029" level="INFO">Clicking button 'xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button'.</msg>
+<arg>xpath=//*[@id="sso"]/div/div[2]/main/div/div[2]/div/div/div/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:46:02.545494" elapsed="0.275853"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:46:04.829699" level="INFO">Slept 2 seconds.</msg>
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:46:02.823354" elapsed="2.007378"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Logowanie do konta na starej stronie</doc>
+<status status="PASS" start="2024-06-06T15:46:01.617781" elapsed="3.213921"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:46:01.617781" elapsed="3.214437"/>
+</branch>
+<status status="PASS" start="2024-06-06T15:46:01.615776" elapsed="3.217019"/>
+</if>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<doc>Logowanie do konta</doc>
+<status status="PASS" start="2024-06-06T15:45:57.544106" elapsed="7.289212"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:46:04.835320" level="INFO">Clicking element 'css=[data-testid="cart"]'.</msg>
+<arg>css=[data-testid="cart"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:46:04.834326" elapsed="4.350416"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Koszyk (1 art.)</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:46:09.185738" elapsed="0.465675"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-06-06T15:46:09.654946" level="INFO">Clicking button 'css=[data-id="article-remove"]'.</msg>
+<arg>css=[data-id="article-remove"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-06-06T15:46:09.653403" elapsed="0.782582"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Artykuł usunięto.</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-06-06T15:46:10.437992" elapsed="0.909854"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2024-06-06T15:46:12.359604" level="INFO">Slept 1 second.</msg>
+<arg>1</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2024-06-06T15:46:11.348857" elapsed="1.010747"/>
+</kw>
+<doc>Usunięcie produktu z koszyka</doc>
+<status status="PASS" start="2024-06-06T15:45:57.543103" elapsed="14.817496"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-06-06T15:46:12.361581" elapsed="2.343384"/>
+</kw>
+<status status="PASS" start="2024-06-06T15:45:50.583104" elapsed="24.122884"/>
+</test>
+<status status="PASS" start="2024-06-06T15:41:00.511228" elapsed="314.196743"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="13" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="TestSuite">TestSuite</stat>
+<stat pass="13" fail="0" skip="0" id="s1" name="TestSuite">TestSuite</stat>
 </suite>
 </statistics>
 <errors>
