@@ -6,7 +6,6 @@ Library    Dialogs
 Library    Collections
 Library    String
 
-
 *** Variables ***
 ${URL}    https://www.zalando.pl
 ${email}    testerkawsb@gmail.com
@@ -16,7 +15,7 @@ ${invalid_email_message}    Podaj pełny adres e-mail (np. jan.kowalski@domena.p
 ${invalid_password_message}    Wpis jest za krótki.
 ${no_email}    Wymagany adres e-mail
 ${no_password}    Wymagane hasło
-
+${product_file}    product.txt
 *** Keywords ***
 Open Browser To Zalando Homepage
     [Documentation]    Otwarcie przeglądarki Chrome i zmaksymalizowanie okna
@@ -27,7 +26,7 @@ Login_to_account
     [Documentation]    Logowanie do konta
     [Arguments]    ${email}    ${password}
     Click Element    id=header-user-account-icon
-    sleep    2
+    sleep    1
     ${is_new_page}=    Run Keyword And Return Status    Page Should Contain    W mgnieniu oka
     Run Keyword If    ${is_new_page}    New_login_page    ${email}    ${password}    ELSE    Old_login_page    ${email}    ${password}
 
@@ -52,7 +51,7 @@ New_login_page
     Wait Until Element Is Not Visible    xpath=//*[@id="theme-wrapper"]/main/section[3]/section[2]/form/button
 
 #1. Testowanie Konta Użytkownika
-        #1.1. Testowanie Poprawności Logowania
+    #1.1. Testowanie Poprawności Logowania
 
 Valid_login
     [Documentation]    Logowanie użytkownika z poprawnymi danymi
@@ -91,7 +90,7 @@ Logout_of_account
     Mouse Over    id=header-user-account-icon
     Page Should Contain    Zaloguj się
 
-         #1.2. Testowanie Błędnego Logowania
+    #1.2. Testowanie Błędnego Logowania
 Invalid_login
     [Documentation]    Sprawdzenie poprawności komunikatu o błędnych danych logowania
     ${invalid_email}=        FakerLibrary.Email
@@ -165,6 +164,7 @@ Sort_from_lowest_price
 
 #3. Testowanie Koszyka Zakupowego
     #3.1. Testowanie Dodawania Produktów do Koszyka
+
 Add_to_cart
     [Documentation]    Dodanie produktu do koszyka
     Login_to_account
@@ -173,9 +173,6 @@ Add_to_cart
     wait until page does not contain    Witaj ponownie
     click element    link=Promocje %
     wait until page contains    Liczba produktów
-    #${product_text}=    Get WebElement    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
-    #${product_name}=    get element attribute    ${product_text}    alt
-    #log     ${product_name}
     click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span    #kobiety
     wait until page contains    Produkty damskie w promocji
     click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/a/span    #akcesoria
@@ -185,46 +182,40 @@ Add_to_cart
     scroll element into view    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[7]/a/span
     click element    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
     wait until page contains    Dodaj do koszyka
-    #${product_text_2}=    Get WebElement    //*[@id="main-content"]/div[1]/div/div[2]/h1/span
-    #${product_name_2}=    get element attribute    ${product_text_2}    innerText
-    #log    ${product_name_2}
+    ${product_text}=    Get WebElement    //*[@id="main-content"]/div[1]/div/div[2]/h1/span
+    ${product_name}=    get element attribute    ${product_text}    innerText
+    log    ${product_name}
     #should be equal    ${product_name}    ${product_name_2}
     click element    xpath://button[contains(@class, 'vfoVrE') and contains(@class, 'heWLCX') and contains(span, 'Dodaj do koszyka')]
-    #tu sprawdzic czy dodało
-    pause execution
-    sleep    2
+    #Zapisanie nazwy produktu w pliku tekstowym
+    Create File    ${product_file}    ${product_name}
 
-
-    #3.2. Testowanie Usuwania Produktów z Koszyka
-Remove_from_cart
-    [Documentation]    Dodanie produktu do koszyka
+Verification_of_added_product
+    [Documentation]    Sprawdzenie czy produkt dodany wcześniej znajduje się w koszyku
     Login_to_account
     ...    email=${email}
     ...    password=${password}
     wait until page does not contain    Witaj ponownie
-    click element    link=Promocje %
-    wait until page contains    Liczba produktów
-    #${product_text}=    Get WebElement    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
-    #${product_name}=    get element attribute    ${product_text}    alt
-    #log     ${product_name}
-    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li[1]/a/span    #kobiety
-    wait until page contains    Produkty damskie w promocji
-    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/a/span    #akcesoria
-    wait until page contains    Akcesoria damskie w promocji
-    click element    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[5]/ul/li[1]/a/span    #torby i plecaki
-    wait until page contains    Torby damskie w promocji
-    scroll element into view    //*[@id="main-content"]/div/div[6]/div/div[1]/aside/ul/li/ul/li[7]/a/span
-    click element    //*[@id="main-content"]/div/div[6]/div/div[2]/div[2]/div[2]/div[2]/div/article/a/figure/div/div/img
-    wait until page contains    Dodaj do koszyka
-    #${product_text_2}=    Get WebElement    //*[@id="main-content"]/div[1]/div/div[2]/h1/span
-    #${product_name_2}=    get element attribute    ${product_text_2}    innerText
-    #log    ${product_name_2}
-    #should be equal    ${product_name}    ${product_name_2}
-    click element    xpath://button[contains(@class, 'vfoVrE') and contains(@class, 'heWLCX') and contains(span, 'Dodaj do koszyka')]
-    # tutaj usunac z koszyka
+    click element    css=[data-testid="cart"]
+    wait until page contains    Do zapłaty
+    #Wczytanie nazwy produktu z pliku tekstowego
+    ${product_name}=    Get File    ${product_file}
+    ${product_text2}=    get webelement   //*[@id="article-c2bac10d-23e0-11ef-80d6-ed0cf4d8451b"]/div/div[2]/div[1]/div[1]
+    ${product_name2}=    get element attribute    ${product_text2}    textContent
+    log    ${product_name2}
+    Should contain    ${product_name2}    ${product_name}
 
-    pause execution
-    sleep    2
+    #3.2. Testowanie Usuwania Produktów z Koszyka
+Remove_from_cart
+    [Documentation]    Usunięcie produktu z koszyka
+    Login_to_account
+    ...    email=${email}
+    ...    password=${password}
+    click element    css=[data-testid="cart"]
+    wait until page contains    Koszyk (1 art.)
+    click button    css=[data-id="article-remove"]
+    wait until page contains    Artykuł usunięto.
+    sleep    1
 
 
 

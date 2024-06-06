@@ -44,3 +44,9 @@ Test_Case_10
 
 Test_Case_11
     Add_to_cart
+
+Test_Case_12
+    Verification_of_added_product
+
+Test_Case_13
+    Remove_from_cart
